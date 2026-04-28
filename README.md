@@ -4,7 +4,7 @@ Questo lavoro, svolto da [@Luca255](https://github.com/Luca255) e [@DakoDC](http
 Di seguito sono riportati i procedimenti e le informazioni necessarie per riproducibilità e avviamento del codice. Inoltre, nel file report_analisi.pdf, è presente una descrizione dell'intera analisi svolta.
 
 ## Riproducibilità  
-Per ottenere gli stessi risultati, seguire le informazioni in requirements.txt tramite la versione 3.13.12 di python.
+Per ottenere gli stessi risultati eseguire i codici con Python 3.13.12 e assicurarsi che le versioni dei pacchetti corrispondano a quelle in requirements.txt.
 
 ## Procedimento  
 Vengono qui brevemente descritte le fasi da svolgere per riprodurre per l'analisi:  
