@@ -6,6 +6,8 @@ stazioni = read.csv2("dati/stazioni-appaltanti_csv.csv", header=T)
 
 
 # Caricamento del ranking fatto sui soli comuni
+# Deve essere creato a partire dal ranking prodotto con l'autoencoder
+# nel file analisi_appalti_ANAC.ipynb
 ranking = read.csv("dati/final_ranking.csv", header=T)
 ranking$rank = 1:nrow(ranking)
 
