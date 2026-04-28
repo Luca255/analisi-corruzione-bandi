@@ -7,7 +7,7 @@ Di seguito sono riportati i procedimenti e le informazioni necessarie per riprod
 Per ottenere gli stessi risultati, seguire le informazioni in requirements.txt tramite la versione 3.13.12 di python.
 
 ## Procedimento  
-Il procedimento svolto ha riguardato:  
+Vengono qui brevemente descritte le fasi da svolgere per riprodurre per l'analisi:  
 - Avviare il codice di download_bando_cig.py, il quale scarica in modo automatico nella cartella selezionata tutti i Dataset relativi al Bando CIG dal sito dell'ANAC nel periodo di anni voluto.  
 - Scaricare a mano i restanti singoli csv dal sito dell'ANAC necessari per l'analisi: Aggiudicatari, Aggiudicazioni, Bando CIG, Fine Contratto, Partecipanti, Quadro Economico, Stazione Appaltante e Varianti; salvandoli in una cartella ANAC_datasets.  
 - Avviare il codice ANAC_datasets_merge.R il quale a partire dai file scaricati, svolge del preprocessing e unione di questi csv in un unico Dataset dati_2011_2025.zip.  
