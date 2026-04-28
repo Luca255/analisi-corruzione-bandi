@@ -1,5 +1,6 @@
 
-# unire csv
+# codice per preprocessing e unire csv ------------------------------------
+
 
 # SA        codice_fiscale                              <-> cf_amministrazione_appaltante     bando
 # bando     cig | cig_accordo_quadro | CIG_COLLEGAMENTO <-> cig                               aggiudicazioni
@@ -15,8 +16,9 @@ library(tidyverse)
 # load Bando cig ----------------------------------------------------------
 library(data.table)
 
-# creare la cartella che avrà tutte le cartelle dei bandi cig per anno
-base_path <- "Bando_cig_files/"
+# prima di tutto, scaricare tutti i bandi cig voluti con l'apposito codice python
+base_path <- "Bando_cig_files/" # cartella in cui sono stati scaricate tutte le cartelle dei bandi cig per anno
+
 
 # list all zip files recursively
 files <- list.files(
