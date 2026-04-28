@@ -15,8 +15,8 @@ library(tidyverse)
 # load Bando cig ----------------------------------------------------------
 library(data.table)
 
-# cartella con tutte le cartelle dei bandi cig per anno
-base_path <- "C:/Users/dakot/OneDrive/Desktop/Lab Aziende Statistica/Lab_aziende/Bando_cig_files/"
+# creare la cartella che avrà tutte le cartelle dei bandi cig per anno
+base_path <- "Bando_cig_files/"
 
 # list all zip files recursively
 files <- list.files(
@@ -169,52 +169,9 @@ Bando = final_cig_df %>%
 
 Bando$DATA_COMUNICAZIONE_ESITO %>% summary()
 Bando %>% nrow() # 9966106
-##################
 
 
-# Bando_cols_keep <- c(
-#   "cig",
-#   "cig_accordo_quadro",
-#   "numero_gara",
-#   "oggetto_gara",
-#   "importo_complessivo_gara",
-#   "settore",
-#   "data_pubblicazione",
-#   "data_scadenza_offerta",
-#   "cod_tipo_scelta_contraente",
-#   "tipo_scelta_contraente",
-#   "cod_modalita_realizzazione",
-#   "cf_amministrazione_appaltante",
-#   "denominazione_amministrazione_appaltante",
-#   "descrizione_cpv",
-#   "CIG_COLLEGAMENTO",
-#   "COD_ESITO",
-#   "ESITO",
-#   "DATA_COMUNICAZIONE_ESITO"
-# )
-# 
-# Bando <- fread("cig_2011_2025.zip", select = Bando_cols_keep, colClasses = c(cf_amministrazione_appaltante = "character", codice_ausa = "character")) %>% 
-#   mutate(
-#     data_pubblicazione = as.Date(data_pubblicazione),
-#     data_scadenza_offerta = as.Date(data_scadenza_offerta),
-#     DATA_COMUNICAZIONE_ESITO = as.Date(DATA_COMUNICAZIONE_ESITO)
-#   ) %>% 
-#   rename(
-#     codice_fiscale = cf_amministrazione_appaltante,             
-#     # stato_vita_cig = stato, # tolto perché la variabile è stata tolta
-#     denominazione_scritto_simile = denominazione_amministrazione_appaltante
-#   ) %>% as.data.frame()
 
-Bando %>% glimpse()
-Bando %>% summary()
-# write.csv(Bando, "bando_2011_2025.csv", row.names = FALSE) # check se c'è modo per vedere barra avanzamaento con write.csv
-as.Date("2002-03-22")
-Bando %>% filter(
-  data_pubblicazione >= as.Date("2016-01-01")
-)
-Bando$data_pubblicazione[Bando$data_pubblicazione >= as.Date("2011-01-01")]
-Bando[1000000:1000005,]$data_pubblicazione
-Bando
 # Stazione appaltante -----------------------------------------------------
 
 SA = read.csv("ANAC_datasets/stazioni-appaltanti_csv.csv", header = T, sep = ";") %>% 
@@ -321,13 +278,10 @@ aggiudicatari = read.csv("ANAC_datasets/aggiudicatari_csv.csv", header = T, sep 
 
 # Unire i dataset ---------------------------------------------------------
 
-
-# Bando: # 9966106
-
+# Bando: # 9966106 righe
 
 
 # attuale unità delle righe: una sola gara, con più tipologie di lavori associate (ex. stessi campi ma cambia la descrizione)
-
 
 Bando_SA_AGG <- Bando %>%
   left_join(
@@ -435,12 +389,6 @@ dati = dati %>%
   left_join(dati_fine_contratto, by = c("cig", "id_aggiudicazione")) %>% 
   left_join(dati_num_varianti, by = c("cig", "id_aggiudicazione"))
 
-# dati_varianti %>% 
-#   filter(CF_stazione == "00110350071") %>% 
-#   select(num_varianti, finito) %>% 
-#   summarise(
-#     ciao = sum(num_varianti[finito==1] > 0, na.rm=T) / sum(finito, na.rm=T)
-#   )
 
 
 # Quadro economico --------------------------------------------------------
@@ -485,9 +433,6 @@ dati = dati %>%
 
 
 
-
-
-
 # Unione partecipanti -----------------------------------------------------
 
 partecipanti = read.csv2("ANAC_datasets/partecipanti_csv.csv", header=T)
@@ -503,10 +448,7 @@ dati = dati %>%
   relocate(num_partecipanti, .after = "num_imprese_offerenti")
 
 
-# View(dati)
 
-
-##
 # aggiudicatari = read.csv("ANAC_datasets/aggiudicatari_csv.csv", header = T, sep = ";") %>%
 #   select(
 #     cig,
@@ -573,4 +515,4 @@ dati %>% ncol() # 57
 
 Bando %>% nrow() # 9966106
 
-(10380017 - 9966106)/10380017
+
